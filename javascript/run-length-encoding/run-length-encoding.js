@@ -1,26 +1,11 @@
-const R = require('ramda');
-
-// return input.replace(/(\D+)\1/g, replacer); // TODO: can this be done with regex?
-
-const groupChars = (arr, char) => {
-    const [headCount, headLetter] = arr.pop() || [];
-    return char === headLetter
-        ? [...arr, [(headCount || 1) + 1, headLetter]]
-        : [...arr, headCount, headLetter, [null, char]];
+const expandNumber = (str) => {
+    const l = str.split('').pop();
+    const n = parseInt(str, 10);
+    return new Array(parseInt(n, 10)).fill(l).join('')
 };
-
-const flattenLastElement = (arr) => {
-    const el = arr.pop() || [];
-    arr.push(...el);
-    return arr;
-}
+const collapseChars = c => `${c.length}${c[0]}`;
 
 module.exports = {
-    encode: R.pipe(
-        R.split(''),
-        R.reduce(groupChars, []),
-        flattenLastElement,
-        R.join(''),
-    ),
-    decode: input => input,
+    encode(s) { return s.replace(/(.)\1+/g, collapseChars); },
+    decode(s) { return s.replace(/(\d+\D)/g, expandNumber); },
 };

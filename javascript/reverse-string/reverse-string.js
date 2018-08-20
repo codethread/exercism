@@ -1,7 +1,7 @@
-const R = require('ramda');
+const R = require("ramda");
 
 module.exports = R.pipe(
-    R.split(''),
-    R.reverse,
-    R.join(''),
+  R.split(""),
+  R.reverse,
+  R.join("")
 );

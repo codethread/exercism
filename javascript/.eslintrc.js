@@ -1,15 +1,13 @@
 module.exports = {
-    extends: 'airbnb',
-    rules: {
-        indent: ['error', 4],
-        'func-names': 'off',
-        'no-underscore-dangle': 'off',
-    },
-    env: {
-        browser: true,
-        node: true,
-        jest: true,
-    },
-    settings: {}
-}
-
+  extends: ["airbnb", "prettier"], // turns off styling rules
+  rules: {
+    "func-names": "off",
+    "no-underscore-dangle": "off",
+  },
+  env: {
+    browser: true,
+    node: true,
+    jest: true
+  },
+  settings: {}
+};
